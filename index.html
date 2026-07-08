@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annie Hung | Cloud Product Manager</title>
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Type scale */
+      --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+      --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+      --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+      --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+      --text-3xl:  clamp(2.5rem,   1rem    + 4vw,    5rem);
+      --text-hero: clamp(3rem,     0.5rem  + 7vw,    8rem);
+
+      /* Spacing */
+      --space-1:  0.25rem;
+      --space-2:  0.5rem;
+      --space-3:  0.75rem;
+      --space-4:  1rem;
+      --space-5:  1.25rem;
+      --space-6:  1.5rem;
+      --space-8:  2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      /* Nexus colors light */
+      --color-bg:             #f7f6f2;
+      --color-surface:        #f9f8f5;
+      --color-surface-2:      #fbfbf9;
+      --color-surface-offset: #f3f0ec;
+      --color-divider:        #dcd9d5;
+      --color-border:         #d4d1ca;
+      --color-text:           #28251d;
+      --color-text-muted:     #7a7974;
+      --color-text-faint:     #bab9b4;
+      --color-text-inverse:   #f9f8f4;
+      --color-primary:        #01696f;
+      --color-primary-hover:  #0c4e54;
+      --color-primary-active: #0f3638;
+      --color-primary-highlight: #cedcd8;
+
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 1px 2px oklch(0.2 0.01 80 / 0.06);
+      --shadow-md: 0 4px 12px oklch(0.2 0.01 80 / 0.08);
+      --shadow-lg: 0 12px 32px oklch(0.2 0.01 80 / 0.12);
+
+      --content-narrow: 640px;
+      --content-default: 960px;
+      --content-wide: 1200px;
+
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-body: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-display: 'Boska', 'Times New Roman', serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg:             #171614;
+      --color-surface:        #1c1b19;
+      --color-surface-2:      #201f1d;
+      --color-surface-offset: #1d1c1a;
+      --color-divider:        #262523;
+      --color-border:         #393836;
+      --color-text:           #cdccca;
+      --color-text-muted:     #797876;
+      --color-text-faint:     #5a5957;
+      --color-text-inverse:   #2b2a28;
+      --color-primary:        #4f98a3;
+      --color-primary-hover:  #227f8b;
+      --color-primary-active: #1a626b;
+      --color-primary-highlight: #313b3b;
+      --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.2);
+      --shadow-md: 0 4px 12px oklch(0 0 0 / 0.3);
+      --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.4);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--space-16);
+    }
+
+    body {
+      min-height: 100vh;
+      line-height: 1.6;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a, button, [role="button"], [role="link"], input {
+      transition: color var(--transition-interactive),
+                  background var(--transition-interactive),
+                  border-color var(--transition-interactive),
+                  box-shadow var(--transition-interactive),
+                  transform var(--transition-interactive);
+    }
+
+    h1, h2, h3, h4 {
+      text-wrap: balance;
+      line-height: 1.15;
+      font-family: var(--font-display);
+    }
+
+    p {
+      text-wrap: pretty;
+      max-width: 72ch;
+    }
+
+    ::selection {
+      background: oklch(from var(--color-primary) l c h / 0.25);
+      color: var(--color-text);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    .page {
+      max-width: var(--content-wide);
+      margin-inline: auto;
+      padding-inline: var(--space-4);
+    }
+
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: color-mix(in oklch, var(--color-bg) 80%, transparent);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .site-header-inner {
+      max-width: var(--content-wide);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: var(--space-3);
+      padding-inline: var(--space-4);
+      gap: var(--space-4);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 20% 20%, var(--color-primary) 0, transparent 60%),
+                  radial-gradient(circle at 80% 80%, var(--color-primary-highlight) 0, transparent 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      color: var(--color-text-inverse);
+    }
+
+    .brand-mark svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-role {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    nav.primary-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      font-size: var(--text-sm);
+    }
+
+    nav.primary-nav a {
+      position: relative;
+      padding-block: 4px;
+    }
+
+    nav.primary-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      transition: width var(--transition-interactive);
+    }
+
+    nav.primary-nav a:hover::after,
+    nav.primary-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-surface-2);
+      color: var(--color-text);
+    }
+
+    .theme-toggle:hover {
+      background: var(--color-surface-offset);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    main {
+      padding-block: var(--space-8);
+    }
+
+    section {
+      padding-block: var(--space-10);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+      padding-bottom: var(--space-16);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .section-title {
+      font-size: var(--text-xl);
+    }
+
+    .section-kicker {
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+    }
+
+    .section-description {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: var(--space-10);
+      align-items: center;
+      padding-top: var(--space-12);
+    }
+
+    .hero-title {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 2px var(--space-2);
+      border-radius: var(--radius-full);
+      background: var(--color-primary-highlight);
+      color: var(--color-primary-active);
+      font-size: var(--text-xs);
+      margin-bottom: var(--space-3);
+    }
+
+    .hero-body {
+      margin-bottom: var(--space-4);
+      color: var(--color-text-muted);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-5);
+    }
+
+    .pill {
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      padding: 4px 10px;
+      background: var(--color-surface-2);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding-inline: var(--space-4);
+      padding-block: 0.55rem;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-ghost {
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      border-color: var(--color-border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--color-surface-offset);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-panel {
+      background: radial-gradient(circle at 0 0, var(--color-primary-highlight) 0, transparent 55%),
+                  linear-gradient(135deg, var(--color-surface-2), var(--color-surface-offset));
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .stat {
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      background: color-mix(in oklch, var(--color-surface), var(--color-primary-highlight) 8%);
+      border: 1px solid color-mix(in oklch, var(--color-border), var(--color-primary) 10%);
+    }
+
+    .stat-label {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: var(--text-lg);
+      font-weight: 600;
+    }
+
+    .stat-note {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .hero-note {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* About & skills */
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: var(--space-10);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+
+    .badge {
+      font-size: var(--text-xs);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-muted);
+    }
+
+    .subtitle {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+    }
+
+    .list li::before {
+      content: "•";
+      color: var(--color-primary);
+      margin-right: 0.5rem;
+    }
+
+    .list li {
+      padding-left: 0.1rem;
+    }
+
+    .list-compact {
+      gap: var(--space-1);
+    }
+
+    .list-compact li {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Skill map & tools */
+    .skill-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+
+    .skill-group {
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .skill-group-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    .skill-group-body {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-6);
+    }
+
+    .tools-category {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .tools-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    /* Timeline */
+    .timeline {
+      list-style: none;
+      position: relative;
+      padding-left: var(--space-4);
+      margin-top: var(--space-4);
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0.5rem;
+      top: 0.2rem;
+      bottom: 0.2rem;
+      width: 2px;
+      background: var(--color-border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: var(--space-4);
+      margin-bottom: var(--space-4);
+    }
+
+    .timeline-bullet {
+      position: absolute;
+      left: -0.05rem;
+      top: 0.25rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--color-bg);
+      border: 2px solid var(--color-primary);
+    }
+
+    .timeline-time {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-text-muted);
+      margin-bottom: 2px;
+    }
+
+    .timeline-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    .timeline-subtitle {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: 4px;
+    }
+
+    .timeline-body {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .timeline-body strong {
+      font-weight: 600;
+    }
+
+    /* Projects */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+    }
+
+    .project-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .tag {
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+    }
+
+    .project-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    .project-role {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .project-body {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .project-result {
+      font-size: var(--text-xs);
+      color: var(--color-primary-active);
+      font-weight: 500;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr);
+      gap: var(--space-8);
+      align-items: flex-start;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+    }
+
+    .contact-label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--color-text-muted);
+    }
+
+    .contact-value {
+      font-weight: 500;
+    }
+
+    footer {
+      border-top: 1px solid var(--color-divider);
+      padding-block: var(--space-4);
+      margin-top: var(--space-8);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .footer-inner {
+      max-width: var(--content-wide);
+      margin-inline: auto;
+      padding-inline: var(--space-4);
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-panel {
+        order: -1;
+      }
+
+      .two-column,
+      .project-grid,
+      .contact-grid,
+      .skill-matrix,
+      .tools-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .site-header-inner {
+        padding-inline: var(--space-2);
+      }
+
+      nav.primary-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding-block: var(--space-4);
+      }
+
+      section {
+        padding-block: var(--space-6);
+      }
+
+      .hero-title {
+        font-size: var(--text-xl);
+      }
+
+      .hero-panel {
+        padding: var(--space-4);
+      }
+    }
+  
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-4);
+      margin-top: var(--space-4);
+    }
+    .project-card {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface-2);
+      padding: var(--space-3);
+      box-shadow: var(--shadow-sm);
+    }
+    .project-card img {
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-2);
+    }
+    .project-card figcaption {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+  </style>
+</head>
+<body>
+  <a href="#about" class="sr-only">跳到主要內容</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" role="img" aria-label="332 mark">
+            <path d="M6 9c2-3 5-5 10-5 6 0 10 3 10 8 0 4-3 6-6 7 3 1 5 3 5 6 0 4-4 7-9 7-4 0-7-2-9-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">Annie Hung</div>
+          <div class="brand-role">Cloud Product Manager & Program Manager</div>
+        </div>
+      </div>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="#about">關於我</a>
+        <a href="#skills">專業技能</a>
+        <a href="#projects">代表專案</a>
+        <a href="#contact">履歷與聯絡</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="切換為深色模式"></button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="hero" aria-labelledby="hero-title">
+      <div class="hero">
+        <div>
+          <div class="hero-subtitle">Senior Cloud Product / Program Manager</div>
+          <div class="hero-highlight">4+ 年雲端產品與企業 IT 實戰 · AWS / Multi-Cloud · Program & GTM</div>
+          <h1 id="hero-title" class="hero-title">把多雲與企業級專案，轉換成有指標、可複製的產品與營運成果。</h1>
+          <p class="hero-body">
+            目前任職於台灣 AWS 總代理擔任 Cloud Product Manager，主責 AWS 及多雲解決方案的產品策略與 Program 推進，從市場驗證、方案設計、Program / Funding 運用，到專案落地與 ARR 貢獻，皆以產品思維管理整體生命週期。
+          </p>
+          <div class="hero-meta">
+            <span class="pill">台北 · Banqiao, Taiwan</span>
+            <span class="pill">AWS · Databricks · Alibaba Cloud</span>
+            <span class="pill">Enterprise TPM / Cloud PO</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">聯絡我 · Contact</a>
+            <a class="btn btn-ghost" href="#projects">查看代表專案</a>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Key metrics">
+          <!-- Profile photo -->
+          <img src="profile-photo.jpg" alt="Photo of Annie Hung" style="border-radius: 12px; max-width: 120px; margin-bottom: 1rem; box-shadow: var(--shadow-md);" />
+          <div class="hero-stat-grid">
+            <div class="stat">
+              <div class="stat-label">ARR & Pipeline</div>
+              <div class="stat-value">USD 3.7M+</div>
+              <div class="stat-note">年度實際 ARR；Pipeline 達成率超過 100%（相對公司年度目標）。</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">企業客戶與專案</div>
+              <div class="stat-value">25+ / 30+</div>
+              <div class="stat-note">深耕 25+ 家上市櫃與公部門客戶，累積 30+ 個雲端與資料平台專案。</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Program & Competency</div>
+              <div class="stat-value">AWS MSP & Migration</div>
+              <div class="stat-note">三個月內帶領團隊完成 MSP Full Audit 與 AWS Migration Competency。</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">代表產業</div>
+              <div class="stat-value">製造 · 金融 · 公部門</div>
+              <div class="stat-note">含集團級 Landing Zone、Oracle 移轉、Databricks 數據中台等方案。</div>
+            </div>
+          </div>
+          <p class="hero-note">此頁面以 Program / Product Manager 的視角撰寫，方便甲方與原廠一眼看出可見績效與專案規模。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Profile</div>
+          <h2 id="about-title" class="section-title">關於我 · Personal Profile</h2>
+        </div>
+        <p class="section-description">從 IT Audit 與系統開發起步，走進雲端產品與 Program 管理，擅長用技術語言與商業語言說同一件事。</p>
+      </header>
+      <div class="two-column">
+        <div>
+          <p>
+            我是 Annie Hung，現職 Cloud Product Manager，負責 AWS 與多雲解決方案的產品線經營與大型專案規劃，橫跨製造、金融、公部門與科技產業。
+            早期從 IT / ERP Audit 與 .NET、JavaScript 開發起步，熟悉企業內控、系統架構與工程現場，能在需求訪談階段就把商業目標、風險與技術限制說清楚，讓利害關係人在同一個基準下決策。
+          </p>
+          <p style="margin-top: var(--space-3);">
+            過去幾年，我主導 AWS 2-Tier 通路與 Program / Funding 運作，帶領團隊完成 Migration Competency 與 MSP Audit，並以 WBS 與 Issue List 管理 30+ 個專案，
+            其中包含集團級 Landing Zone、跨國 Oracle 雲遷移與 Databricks AI / 數據中台等高複雜度案型。
+          </p>
+          <div class="badge-row">
+            <span class="badge">Cloud Product Owner</span>
+            <span class="badge">Technical Program Management</span>
+            <span class="badge">AWS MSP / Migration Competency</span>
+            <span class="badge">IT Audit & ERP Background</span>
+            <span class="badge">Full-stack side projects</span>
+          </div>
+        </div>
+        <div>
+          <div class="subtitle">我帶給團隊與企業的價值</div>
+          <ul class="list">
+            <li>會先從 ARR、Pipeline、客戶 LTV 與 Program 槓桿來設計雲端專案，而不是只看工時與人天。</li>
+            <li>同時懂 2-Tier 通路、ISV、生態系與交付現場，擅長把原廠資源、技術能量包裝成可 Scale 的方案與成功案例。</li>
+            <li>具備 IT 稽核與開發底子，能與工程、資訊與財會團隊直接對話，降低跨部門溝通成本。</li>
+            <li>擅長將複雜需求拆解為 User Story 與 Work Breakdown，讓利害關係人對風險與里程碑有共同語言。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-title">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Strengths</div>
+          <h2 id="skills-title" class="section-title">專業技能 · Skills & Edge</h2>
+        </div>
+        <p class="section-description">結合雲端產品、Program 管理與技術底子的混血角色，適合需要同時懂技術與商業決策的團隊。</p>
+      </header>
+      <div class="two-column">
+        <div>
+          <div class="subtitle">產品 / 商業能力</div>
+          <ul class="list">
+            <li>雲端產品線定位與 Go-to-Market：掌握 AWS / 多雲服務的產品定位、適用場景與毛利結構，設計通路策略、Pricing 與 Bundling 方案。</li>
+            <li>Program / Funding 策略：熟悉 MAP、POC Credit、Region Funding 等機制，規劃申請節奏與成功率，最大化原廠補助對專案落地的貢獻。</li>
+            <li>Pipeline 與績效管理：以 ARR、轉換率與 LTV 規劃目標，建立售前 → 成案 → 結案的漏斗追蹤。</li>
+            <li>多方利害關係人協調：在原廠、SI、代理商與客戶之間設計合理分工與分潤，確保各方都能獲利。</li>
+          </ul>
+        </div>
+        <div>
+          <div class="subtitle">技術 / 雲端與 PM 能力</div>
+          <ul class="list">
+            <li>多雲與資料平台：AWS 為主，搭配 Databricks、Alibaba Cloud 等，實際參與 Landing Zone、DR 與數據中台規劃。</li>
+            <li>專案與 Program 管理：以 WBS、Issue List 與定期 Sync Meeting 管理 30+ 專案，兼顧時程、範疇與風險。</li>
+            <li>IT Audit 與合規：完成 20+ 家企業 ERP 稽核與 3 件 IPO 測試，熟悉財務內控與資訊安全要求。</li>
+            <li>開發與技術溝通：具 Web / .NET / SQL 開發經驗，能理解系統實作限制，與工程團隊共同設計可落地方案。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Case Studies</div>
+          <h2 id="projects-title" class="section-title">代表專案 · Highlight Projects</h2>
+        </div>
+        <p class="section-description">挑出幾個能代表「雲端 Program Manager / Product Owner」角色的專案，用 PM 語言說明情境、行動與結果。</p>
+      </header>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="tag">集團級 Landing Zone</span>
+            <span class="tag">AWS ProServe 協作</span>
+          </div>
+          <div>
+            <div class="project-title">上市集團雲端 Landing Zone 與雲治理 Program</div>
+            <div class="project-role">Role：Program Manager & Cloud PO（代理商端）</div>
+          </div>
+          <p class="project-body">
+            與 AWS ProServe 原廠團隊協作，為某上市集團建立多帳號 Landing Zone 架構與 Security Baseline，涵蓋網路分段、身分權限、日誌集中與監控告警。
+            我負責需求盤點、里程碑規劃、R&R 協調與驗收標準定義，並延伸後續 DR 與 AI 相關專案。
+          </p>
+          <p class="project-result">Result：完成集團級雲端基礎建置與治理框架，延伸出 3+ 個獨立專案，讓雲端導入從單一專案變成長期 Roadmap。</p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="tag">Oracle Migration</span>
+            <span class="tag">跨國科技企業</span>
+          </div>
+          <div>
+            <div class="project-title">跨國科技企業 Oracle 至 AWS 雲遷移</div>
+            <div class="project-role">Role：Project Manager</div>
+          </div>
+          <p class="project-body">
+            負責某跨國科技企業的核心系統 Oracle 至 AWS 雲遷移專案，從現況盤點、架構設計、Cutover 計畫到 Go-Live 驗收，
+            協調客戶 IT、原廠顧問與內部 SA，控管時程與成本，同時維持 MSP / Migration Competency 合規要求。
+          </p>
+          <p class="project-result">Result：在可接受停機窗口內完成移轉並順利上線，降低既有維運成本，並讓後續資料平台與備援策略有更高彈性。</p>
+        </article>
+
+        <article class="project-card">
+          <div class="project-meta">
+            <span class="tag">AWS 2-Tier / ISV</span>
+            <span class="tag">GTM & Program</span>
+          </div>
+          <div>
+            <div class="project-title">AWS 2-Tier 通路與 ISV 生態系產品營運</div>
+            <div class="project-role">Role：Cloud Product Owner</div>
+          </div>
+          <p class="project-body">
+            負責 AWS 2-Tier 模式的產品與通路營運，包含新服務定位、價目與毛利設計、
+            並整合 SAP、Veeam、Zscaler 等 ISV 解決方案，推動 Marketplace 販售資格與 Bundled Offer。
+            同時規劃 Program / Funding 申請策略，提高高複雜度 Migration / DR 專案的落地率。
+          </p>
+          <p class="project-result">Result：一年內主責 16+ 個專案、耕耘 25+ 家企業客戶，實際 ARR 約 USD 3.7M，Pipeline 達成率超過公司目標。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills-map" aria-labelledby="skills-map-title">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Skill Map</div>
+          <h2 id="skills-map-title" class="section-title">技能樹 · Skill Map</h2>
+        </div>
+        <p class="section-description">用圖像化方式整理你在產品 / Program / 雲端與技術三個面向的核心能力，讓用人主管快速抓到你的定位。</p>
+      </header>
+      <div class="skill-matrix">
+        <div class="skill-group">
+          <div class="skill-group-title">雲端產品與商業策略</div>
+          <p class="skill-group-body">Cloud Product Manager · 2-Tier 通路 · AWS Partner Program · ARR / Pipeline / LTV 指標導向。</p>
+          <div class="badge-row">
+            <span class="badge">Product Strategy</span>
+            <span class="badge">GTM & Pricing</span>
+            <span class="badge">Marketplace / ISV</span>
+            <span class="badge">Program / Funding Design</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Program / Stakeholder Orchestration</div>
+          <p class="skill-group-body">大規模專案規劃、利害關係人管理與治理架構設計，協調原廠、SI、代理商與甲方部門共同交付。</p>
+          <div class="badge-row">
+            <span class="badge">Program Management</span>
+            <span class="badge">Stakeholder Orchestration</span>
+            <span class="badge">WBS & Issue List</span>
+            <span class="badge">Governance & Compliance</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">雲端與資料平台技術理解</div>
+          <p class="skill-group-body">AWS 為主、多雲概念（含 Databricks、Alibaba Cloud），熟悉 Landing Zone、Migration、DR 與資料平台場景。</p>
+          <div class="badge-row">
+            <span class="badge">AWS Landing Zone</span>
+            <span class="badge">Migration / DR</span>
+            <span class="badge">Databricks / Data Platform</span>
+            <span class="badge">Security Baseline</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">IT Audit · 開發與溝通</div>
+          <p class="skill-group-body">結合 Big4 風險顧問的 IT / ERP Audit 經驗與 .NET / JS 開發底子，能在產品決策中兼顧內控與工程可行性。</p>
+          <div class="badge-row">
+            <span class="badge">IT / ERP Audit</span>
+            <span class="badge">C# / .NET / JS</span>
+            <span class="badge">需求訪談</span>
+            <span class="badge">跨部門溝通</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" aria-labelledby="tools-title">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Tools & Stack</div>
+          <h2 id="tools-title" class="section-title">常用工具 · Tools & Stack</h2>
+        </div>
+        <p class="section-description">把你在日常工作與 Side Project 中實際使用的雲端、專案、數據與開發工具一次列出，方便技術主管對齊期待。</p>
+      </header>
+      <div class="tools-grid">
+        <div>
+          <div class="tools-category">雲端與資料平台</div>
+          <ul class="tools-list">
+            <li>AWS（EC2, RDS, VPC, IAM, Organizations, Control Tower / Landing Zone, Backup, DR）</li>
+            <li>AWS Partner Program / MAP / Funding 機制</li>
+            <li>Databricks、Alibaba Cloud（遷移與整合場景）</li>
+          </ul>
+          <div class="tools-category" style="margin-top: var(--space-4);">產品與專案管理</div>
+          <ul class="tools-list">
+            <li>WBS / Gantt、Issue List（Excel / Sheets 為主）</li>
+            <li>Jira / Confluence（需求追蹤與 KB 管理）</li>
+            <li>Notion / OneNote（個人知識庫與專案備忘）</li>
+          </ul>
+        </div>
+        <div>
+          <div class="tools-category">開發與自動化</div>
+          <ul class="tools-list">
+            <li>JavaScript / HTML / CSS · 基礎前端開發與簡易 Web App</li>
+            <li>.NET / C# · 早期企業系統開發經驗</li>
+            <li>Python / Shell · 簡易腳本與自動化工具</li>
+            <li>Git / GitHub · 版控與 Side Project 維護</li>
+          </ul>
+          <div class="tools-category" style="margin-top: var(--space-4);">協作與商務工具</div>
+          <ul class="tools-list">
+            <li>Office / Google Workspace · 報表、簡報與財務模型</li>
+            <li>Slack / Teams · 跨部門溝通與客戶協作</li>
+            <li>Figma / Miro · 簡易流程與 UX 草圖</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" aria-labelledby="timeline-title">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Career Timeline</div>
+          <h2 id="timeline-title" class="section-title">經歷時間軸 · Career Timeline</h2>
+        </div>
+        <p class="section-description">用時間軸快速瀏覽從 IT / ERP Audit、雲端專案到 Cloud Product Manager 的轉換過程，讓閱歷更有故事感。</p>
+      </header>
+      <ol class="timeline">
+        <li class="timeline-item">
+          <div class="timeline-bullet" aria-hidden="true"></div>
+          <div class="timeline-time">2024 — Now</div>
+          <div class="timeline-title">Cloud Product Manager · MetaAge 邁達特</div>
+          <div class="timeline-subtitle">AWS Distributor │ Cloud Product Management & Enterprise Migration</div>
+          <p class="timeline-body">主責 AWS 與多雲解決方案的產品線經營，涵蓋 <strong>2-Tier 通路</strong>、<strong>AWS Partner Program / MAP</strong>、<strong>Migration & Landing Zone</strong> 等。
+            以 ARR、Pipeline 與 Program 槓桿為核心，規劃並交付 <strong>製造、公部門與科技客戶</strong> 的雲端專案與長期 Roadmap。</p>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-bullet" aria-hidden="true"></div>
+          <div class="timeline-time">2022 — 2023</div>
+          <div class="timeline-title">Risk Advisory · IT & ERP Audit Consultant</div>
+          <div class="timeline-subtitle">Big4 Risk Advisory │ IT General Control & ERP</div>
+          <p class="timeline-body">參與多家企業的 <strong>IT General Control</strong> 與 <strong>ERP 檢測</strong>、IPO 專案，熟悉財務內控、資訊安全與稽核流程，
+            為日後規劃雲端治理與權限設計（例如 Landing Zone / Security Baseline）奠定基礎。</p>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-bullet" aria-hidden="true"></div>
+          <div class="timeline-time">2021 — 2022</div>
+          <div class="timeline-title">IT Project Manager · CloudRiches 雲端專案</div>
+          <div class="timeline-subtitle">IT Project Management │ Cloud Projects</div>
+          <p class="timeline-body">負責雲端專案排程、需求協調與驗收，實際參與多個中大型客戶的雲端導入與系統整合，
+            從這裡開始累積「同時對齊工程、業務與客戶」的協調能力。</p>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-bullet" aria-hidden="true"></div>
+          <div class="timeline-time">2019 — 2021</div>
+          <div class="timeline-title">Internships · IT / Cloud / Development</div>
+          <div class="timeline-subtitle">China Airlines · Ruiyang Cloud · University Projects</div>
+          <p class="timeline-body">在實習與校內專案中接觸 <strong>系統工程、雲端產品 QA 與 Web 開發</strong>，
+            包含 JavaScript / HTML / C++ / .NET 等技術，理解企業 IT 環境與工程日常。</p>
+        </li>
+        <li class="timeline-item">
+          <div class="timeline-bullet" aria-hidden="true"></div>
+          <div class="timeline-time">—</div>
+          <div class="timeline-title">Information Management & Business Background</div>
+          <div class="timeline-subtitle">Information Management │ National Taipei University</div>
+          <p class="timeline-body">大學主修資管與商管，打下資訊系統、資料庫與企業管理觀念，後續延伸到 IT Audit、雲端產品與 Program 管理。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Resume & Contact</div>
+          <h2 id="contact-title" class="section-title">履歷與聯絡方式</h2>
+        </div>
+        <p class="section-description">這一區塊可以放正式履歷連結、LinkedIn 與 Email，方便 HR、獵頭與 Hiring Manager 直接聯絡你。</p>
+      </header>
+      <div class="contact-grid">
+        <div>
+          <div class="subtitle">聯絡資訊 · Contact</div>
+          <ul class="contact-list">
+            <li>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">annhung314@gmail.com</div>
+            </li>
+            <li>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">
+                <a href="https://www.linkedin.com/in/hsin-tzu-hung-aba082208" target="_blank" rel="noopener noreferrer">linkedin.com/in/hsin-tzu-hung-aba082208</a>
+              </div>
+            </li>
+            <li>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Banqiao, Taipei · Taiwan</div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="subtitle">履歷與作品 · Resume & Side Projects</div>
+                    <p>
+            以下是履歷、作品集、證照以及過去系統作品的截圖示意，你可以將檔名替換為自己實際的圖片檔案或外部 URL。
+          </p>
+          <div class="project-grid">
+            <figure class="project-card">
+              <img src="cv-screenshot.jpg" alt="Screenshot of Annie Hung's resume">
+              <figcaption>履歷 · CV Screenshot</figcaption>
+            </figure>
+            <figure class="project-card">
+              <img src="portfolio-screenshot.jpg" alt="Screenshot of Annie Hung's portfolio and side projects">
+              <figcaption>作品集 · Portfolio & Side Projects</figcaption>
+            </figure>
+            <figure class="project-card">
+              <img src="certificates-screenshot.jpg" alt="Screenshot of Annie Hung's cloud & IT certificates">
+              <figcaption>證照 · Certificates</figcaption>
+            </figure>
+            <figure class="project-card">
+              <img src="systems-screenshot.jpg" alt="Screenshot of past system / product work">
+              <figcaption>系統作品 · Legacy Systems & Products</figcaption>
+            </figure>
+          </div>
+          <div class="hero-actions" style="margin-top: var(--space-4);">
+            <a class="btn btn-primary" href="https://canva.link/eafu5hn8ylxijbc" target="_blank" rel="noopener noreferrer">下載履歷 · Download CV</a>
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">查看 Side Projects</a>
+          </div>
+          <ul class="list list-compact" style="margin-top: var(--space-3);">
+            <li>可依職缺調整：例如 Cloud Product Owner / Enterprise TPM / 顧問等不同版本履歷。</li>
+            <li>建議附上一頁式 Case Study（PDF）說明集團級 Landing Zone 或 Oracle 移轉專案。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 Annie Hung · Cloud Product & Program Management Portfolio</div>
+      <div>設計重點：一頁式 PM 履歷網站，強調可視化績效與代表專案。</div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let mode = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const setIcon = () => {
+        if (!toggle) return;
+        if (mode === 'dark') {
+          toggle.setAttribute('aria-label', '切換為淺色模式');
+          toggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+        } else {
+          toggle.setAttribute('aria-label', '切換為深色模式');
+          toggle.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        }
+      };
+      const applyMode = () => {
+        root.setAttribute('data-theme', mode);
+        setIcon();
+      };
+      applyMode();
+      if (toggle) {
+        toggle.addEventListener('click', function(){
+          mode = mode === 'dark' ? 'light' : 'dark';
+          applyMode();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
